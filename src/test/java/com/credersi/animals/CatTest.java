@@ -1,6 +1,7 @@
 package com.credersi.animals;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
@@ -126,4 +127,25 @@ public class CatTest {
 		cat.feeds();
 		assertEquals(cat.howHungry(), 0);
 	}
+	
+	@Test
+	public void testFalseAssertion() {
+		Cat cat = new Cat();
+		assertFalse(!cat.isAlive());
+	}
+	
+	@Test
+	public void testFeedingDeadCat() {
+		Cat cat = new Cat();
+		assertTrue(cat.isAlive());
+		cat.runs();
+		cat.runs();
+		assertFalse(cat.isAlive());
+		
+		cat.feeds();
+		cat.feeds();
+		assertFalse(cat.isAlive());
+	}
+ 	
+	
 }
